@@ -18,10 +18,13 @@ public class StringSplitter {
      */
     public List<String> splitByDelimiters(String source, Collection<String> delimiters) {
         List<String> result = new ArrayList<>();
-        String delimitersString = String.join("|", delimiters);
-        String[] split = source.split("[" + delimitersString + "]");
-        Collections.addAll(result, split);
-        result = result.stream().filter(s -> s.length() > 0).collect(Collectors.toList());
+        String delimitersString = String.join("|", delimiters);// переводим коллекцию в строку,
+        // каждый элемен разделен '|': 1|e|4|g|w|5
+        String[] split = source.split("[" + delimitersString + "]");// скобки нужны чтобы определить набор делителей
+        // каждый из них подходит в качестве делителя для строки
+        Collections.addAll(result, split);//добавляем все подстроки в лист
+        result = result.stream().filter(s -> s.length() > 0).collect(Collectors.toList());//удаляем из листа
+        //нулевые эелементы вроде ""
         return result;
     }
 }
