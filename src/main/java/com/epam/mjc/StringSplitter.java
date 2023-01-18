@@ -18,7 +18,7 @@ public class StringSplitter {
      */
     public List<String> splitByDelimiters(String source, Collection<String> delimiters) {
         List<String> result = new ArrayList<>();
-        String delimitersString = String.join("|", delimiters); //конкатенируем все делители в одну строку 1|2|3
+        String delimitersString = String.join("|", delimiters);
         String[] split = source.split("[" + delimitersString + "]");
         Collections.addAll(result, split);
         result = result.stream().filter(s -> s.length() > 0).collect(Collectors.toList());
